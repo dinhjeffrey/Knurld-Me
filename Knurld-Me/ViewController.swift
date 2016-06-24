@@ -11,8 +11,8 @@ import Alamofire
 
 class ViewController: UIViewController {
     var json = JSON([])
-    var accessToken = "TWR7fcMGuxBQzqyotfSmJmKAnP7c"
-
+    var accessToken = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let params = [
@@ -27,15 +27,19 @@ class ViewController: UIViewController {
         let url = "https://api.knurld.io/oauth/client_credential/accesstoken?grant_type=client_credentials"
         Alamofire.request(.POST, url, parameters: params, headers: headers)
             .responseJSON { response in
-                print(response)
+                if let accessToken = response.result.value?["access_token"] {
+                    self.accessToken = accessToken as! String
+                    print(self.accessToken)
+                }
         }
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
