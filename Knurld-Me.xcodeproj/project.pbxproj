@@ -1,0 +1,378 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00B65AC11D1CFE5D0079AA0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B65AC01D1CFE5D0079AA0F /* AppDelegate.swift */; };
+		00B65AC31D1CFE5D0079AA0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B65AC21D1CFE5D0079AA0F /* ViewController.swift */; };
+		00B65AC61D1CFE5D0079AA0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00B65AC41D1CFE5D0079AA0F /* Main.storyboard */; };
+		00B65AC81D1CFE5D0079AA0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00B65AC71D1CFE5D0079AA0F /* Assets.xcassets */; };
+		00B65ACB1D1CFE5D0079AA0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00B65AC91D1CFE5D0079AA0F /* LaunchScreen.storyboard */; };
+		00B65AD31D1CFF380079AA0F /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B65AD21D1CFF380079AA0F /* SwiftyJSON.swift */; };
+		1568363B3A599216E8826CC4 /* Pods_Knurld_Me.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DFDCB28FA67D79DF6A9A345 /* Pods_Knurld_Me.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		00B65ABD1D1CFE5D0079AA0F /* Knurld-Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Knurld-Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00B65AC01D1CFE5D0079AA0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		00B65AC21D1CFE5D0079AA0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		00B65AC51D1CFE5D0079AA0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		00B65AC71D1CFE5D0079AA0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		00B65ACA1D1CFE5D0079AA0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		00B65ACC1D1CFE5D0079AA0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00B65AD21D1CFF380079AA0F /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		1DFDCB28FA67D79DF6A9A345 /* Pods_Knurld_Me.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Knurld_Me.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		20C710DFCA89229BFF00970F /* Pods-Knurld-Me.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knurld-Me.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Knurld-Me/Pods-Knurld-Me.debug.xcconfig"; sourceTree = "<group>"; };
+		F75231ACA4A3D4BC3F1F80D6 /* Pods-Knurld-Me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knurld-Me.release.xcconfig"; path = "Pods/Target Support Files/Pods-Knurld-Me/Pods-Knurld-Me.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00B65ABA1D1CFE5D0079AA0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1568363B3A599216E8826CC4 /* Pods_Knurld_Me.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00B65AB41D1CFE5D0079AA0F = {
+			isa = PBXGroup;
+			children = (
+				00B65ABF1D1CFE5D0079AA0F /* Knurld-Me */,
+				00B65ABE1D1CFE5D0079AA0F /* Products */,
+				1CA2862CB7257F3E8DC7C738 /* Pods */,
+				264E73055307860CEC966F12 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		00B65ABE1D1CFE5D0079AA0F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				00B65ABD1D1CFE5D0079AA0F /* Knurld-Me.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		00B65ABF1D1CFE5D0079AA0F /* Knurld-Me */ = {
+			isa = PBXGroup;
+			children = (
+				00B65AD21D1CFF380079AA0F /* SwiftyJSON.swift */,
+				00B65AC01D1CFE5D0079AA0F /* AppDelegate.swift */,
+				00B65AC21D1CFE5D0079AA0F /* ViewController.swift */,
+				00B65AC41D1CFE5D0079AA0F /* Main.storyboard */,
+				00B65AC71D1CFE5D0079AA0F /* Assets.xcassets */,
+				00B65AC91D1CFE5D0079AA0F /* LaunchScreen.storyboard */,
+				00B65ACC1D1CFE5D0079AA0F /* Info.plist */,
+			);
+			path = "Knurld-Me";
+			sourceTree = "<group>";
+		};
+		1CA2862CB7257F3E8DC7C738 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				20C710DFCA89229BFF00970F /* Pods-Knurld-Me.debug.xcconfig */,
+				F75231ACA4A3D4BC3F1F80D6 /* Pods-Knurld-Me.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		264E73055307860CEC966F12 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DFDCB28FA67D79DF6A9A345 /* Pods_Knurld_Me.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00B65ABC1D1CFE5D0079AA0F /* Knurld-Me */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00B65ACF1D1CFE5D0079AA0F /* Build configuration list for PBXNativeTarget "Knurld-Me" */;
+			buildPhases = (
+				B283427B2FB83C47F7D789A6 /* 📦 Check Pods Manifest.lock */,
+				00B65AB91D1CFE5D0079AA0F /* Sources */,
+				00B65ABA1D1CFE5D0079AA0F /* Frameworks */,
+				00B65ABB1D1CFE5D0079AA0F /* Resources */,
+				67664B7D9930E24E7665BADC /* 📦 Embed Pods Frameworks */,
+				6675DB8123E5B5BD252DA89C /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Knurld-Me";
+			productName = "Knurld-Me";
+			productReference = 00B65ABD1D1CFE5D0079AA0F /* Knurld-Me.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		00B65AB51D1CFE5D0079AA0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "jeffrey dinh";
+				TargetAttributes = {
+					00B65ABC1D1CFE5D0079AA0F = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 5JELCQ2NQZ;
+					};
+				};
+			};
+			buildConfigurationList = 00B65AB81D1CFE5D0079AA0F /* Build configuration list for PBXProject "Knurld-Me" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 00B65AB41D1CFE5D0079AA0F;
+			productRefGroup = 00B65ABE1D1CFE5D0079AA0F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				00B65ABC1D1CFE5D0079AA0F /* Knurld-Me */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00B65ABB1D1CFE5D0079AA0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00B65ACB1D1CFE5D0079AA0F /* LaunchScreen.storyboard in Resources */,
+				00B65AC81D1CFE5D0079AA0F /* Assets.xcassets in Resources */,
+				00B65AC61D1CFE5D0079AA0F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6675DB8123E5B5BD252DA89C /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Knurld-Me/Pods-Knurld-Me-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		67664B7D9930E24E7665BADC /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Knurld-Me/Pods-Knurld-Me-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B283427B2FB83C47F7D789A6 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00B65AB91D1CFE5D0079AA0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00B65AD31D1CFF380079AA0F /* SwiftyJSON.swift in Sources */,
+				00B65AC31D1CFE5D0079AA0F /* ViewController.swift in Sources */,
+				00B65AC11D1CFE5D0079AA0F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		00B65AC41D1CFE5D0079AA0F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				00B65AC51D1CFE5D0079AA0F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		00B65AC91D1CFE5D0079AA0F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				00B65ACA1D1CFE5D0079AA0F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		00B65ACD1D1CFE5D0079AA0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		00B65ACE1D1CFE5D0079AA0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		00B65AD01D1CFE5D0079AA0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20C710DFCA89229BFF00970F /* Pods-Knurld-Me.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Knurld-Me/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dindledoo.Knurld-Me";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		00B65AD11D1CFE5D0079AA0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F75231ACA4A3D4BC3F1F80D6 /* Pods-Knurld-Me.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Knurld-Me/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dindledoo.Knurld-Me";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00B65AB81D1CFE5D0079AA0F /* Build configuration list for PBXProject "Knurld-Me" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00B65ACD1D1CFE5D0079AA0F /* Debug */,
+				00B65ACE1D1CFE5D0079AA0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		00B65ACF1D1CFE5D0079AA0F /* Build configuration list for PBXNativeTarget "Knurld-Me" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00B65AD01D1CFE5D0079AA0F /* Debug */,
+				00B65AD11D1CFE5D0079AA0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 00B65AB51D1CFE5D0079AA0F /* Project object */;
+}
