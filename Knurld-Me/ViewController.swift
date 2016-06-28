@@ -63,6 +63,11 @@ class ViewController: UIViewController {
         verifyVoiceprint("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-3x.wav?dl=1", phrase: ["Athens", "Circle", "Oval"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
         verifyVoiceprint("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-3x.wav?dl=1", phrase: ["Athens", "Oval", "Circle"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
     }
+    
+    @IBAction func initiateCall() {
+        initiateCall("12125551212")
+    }
+    
     func createAppModel(enrollmentRepeats: Int, vocabulary: [String], verificationLength: Int) {
         let url = "https://api.knurld.io/v1/app-models"
         let params = [
@@ -109,7 +114,6 @@ class ViewController: UIViewController {
         
         Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
             .responseJSON { response in
-                print(response)
                 if let consumerID = response.result.value?["href"] as? String {
                     KnurldRouter.consumerID = consumerID
                     print(KnurldRouter.consumerID)
@@ -155,15 +159,13 @@ class ViewController: UIViewController {
                             phrase: [Interval.phrase], start: [Interval.start], stop: [Interval.stop] ) {
         let url = KnurldRouter.enrollmentID
         var intervalsDictionary = [AnyObject]()
-        _ = {
-            for (index, _) in phrase.enumerate() {
-                var intervals = [String: AnyObject]()
-                intervals["phrase"] = phrase[index]
-                intervals["start"] = start[index]
-                intervals["stop"] = stop[index]
-                intervalsDictionary.append(intervals)
-            }
-        }()
+        for (index, _) in phrase.enumerate() {
+            var intervals = [String: AnyObject]()
+            intervals["phrase"] = phrase[index]
+            intervals["start"] = start[index]
+            intervals["stop"] = stop[index]
+            intervalsDictionary.append(intervals)
+        }
         
         let params : [String: AnyObject] = [
             "enrollment.wav": audioLink,
@@ -250,6 +252,32 @@ class ViewController: UIViewController {
             .responseJSON { response in
                 print(response)
         }
+    }
+    
+    func initiateCall(phoneNumber: String) {
+        let url = "https://api.knurld.io/v1/calls"
+        let params = [
+            "number": phoneNumber
+        ]
+        
+        let headers = [
+            "Content-Type": "application/json",
+            "Authorization": KnurldRouter.accessToken,
+            "Developer-Id" : KnurldRouter.developerID
+        ]
+        
+        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
+        let encoding = Alamofire.ParameterEncoding.URL
+        (request, _) = encoding.encode(request, parameters: params)
+        
+        Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
+            .responseJSON { response in
+                if let callID = response.result.value?["href"] as? String {
+                    KnurldRouter.callID = callID
+                    print(KnurldRouter.callID)
+                }
+        }
+        
     }
     
     

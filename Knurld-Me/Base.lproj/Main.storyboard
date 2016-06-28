@@ -46,8 +46,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8F-vl-VJb">
-                                <rect key="frame" x="8" y="209" width="159" height="30"/>
-                                <state key="normal" title="createVerification - 10s"/>
+                                <rect key="frame" x="28" y="209" width="120" height="30"/>
+                                <state key="normal" title="createVerification"/>
                                 <connections>
                                     <action selector="createVerification" destination="BYZ-38-t0r" eventType="touchUpInside" id="CHK-UJ-bUo"/>
                                 </connections>
@@ -57,6 +57,13 @@
                                 <state key="normal" title="createConsumer - disabled"/>
                                 <connections>
                                     <action selector="createConsumer" destination="BYZ-38-t0r" eventType="touchUpInside" id="r2z-au-TbY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2F-eK-YKL">
+                                <rect key="frame" x="29" y="308" width="72" height="30"/>
+                                <state key="normal" title="initiateCall"/>
+                                <connections>
+                                    <action selector="initiateCall" destination="BYZ-38-t0r" eventType="touchUpInside" id="wgp-d4-VzR"/>
                                 </connections>
                             </button>
                         </subviews>

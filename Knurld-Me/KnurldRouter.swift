@@ -21,6 +21,7 @@ public enum KnurldRouter: URLRequestConvertible {
     static var consumerID = "https://api.knurld.io/v1/consumers/ecd1003f382e5a3f544d2f1dcfb4039f" // username: "test2", gender: "M", password: "test"
     static var enrollmentID = url()
     static var verificationID = url()
+    static var callID = url()
     
     // code below not used
     case CreateConsumer(String, String, String)
