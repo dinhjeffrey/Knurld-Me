@@ -116,7 +116,7 @@ public enum ParameterEncoding {
                     return false
                 }
             }
-
+            
             if let method = Method(rawValue: mutableURLRequest.HTTPMethod) where encodesParametersInURL(method) {
                 if let
                     URLComponents = NSURLComponents(URL: mutableURLRequest.URL!, resolvingAgainstBaseURL: false)

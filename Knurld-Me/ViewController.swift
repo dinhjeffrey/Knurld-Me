@@ -57,11 +57,11 @@ class ViewController: UIViewController {
     
     @IBAction func verifyVoiceprint() {
         verifyVoiceprint("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-3x.wav?dl=1", phrase: ["Oval", "Circle", "Athens"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
-         verifyVoiceprint("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-3x.wav?dl=1", phrase: ["Oval", "Athens", "Circle"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
-         verifyVoiceprint("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-3x.wav?dl=1", phrase: ["Circle", "Oval", "Athens"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
-         verifyVoiceprint("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-3x.wav?dl=1", phrase: ["Circle", "Athens", "Oval"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
-         verifyVoiceprint("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-3x.wav?dl=1", phrase: ["Athens", "Circle", "Oval"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
-         verifyVoiceprint("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-3x.wav?dl=1", phrase: ["Athens", "Oval", "Circle"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
+        verifyVoiceprint("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-3x.wav?dl=1", phrase: ["Oval", "Athens", "Circle"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
+        verifyVoiceprint("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-3x.wav?dl=1", phrase: ["Circle", "Oval", "Athens"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
+        verifyVoiceprint("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-3x.wav?dl=1", phrase: ["Circle", "Athens", "Oval"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
+        verifyVoiceprint("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-3x.wav?dl=1", phrase: ["Athens", "Circle", "Oval"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
+        verifyVoiceprint("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-3x.wav?dl=1", phrase: ["Athens", "Oval", "Circle"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
     }
     func createAppModel(enrollmentRepeats: Int, vocabulary: [String], verificationLength: Int) {
         let url = "https://api.knurld.io/v1/app-models"
@@ -75,7 +75,7 @@ class ViewController: UIViewController {
             "Authorization": KnurldRouter.accessToken,
             "Developer-Id" : KnurldRouter.developerID
         ]
-    
+        
         var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
         let encoding = Alamofire.ParameterEncoding.URL
         (request, _) = encoding.encode(request, parameters: params as? [String : AnyObject])
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
         Alamofire.request(.POST, url, parameters: params as? [String : AnyObject], headers: headers, encoding: .JSON)
             .responseJSON { response in
                 if let appModelID = response.result.value?["href"] as? String {
-                    KnurldRouter.appModelID = appModelID 
+                    KnurldRouter.appModelID = appModelID
                     print(KnurldRouter.appModelID)
                 }
         }
@@ -176,9 +176,11 @@ class ViewController: UIViewController {
             "Developer-Id" : KnurldRouter.developerID
         ]
         
-        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
-        let encoding = Alamofire.ParameterEncoding.URL
-        (request, _) = encoding.encode(request, parameters: params)
+        if url != "" {
+            var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
+            let encoding = Alamofire.ParameterEncoding.URL
+            (request, _) = encoding.encode(request, parameters: params)
+        }
         
         Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
             .responseJSON { response in
@@ -214,7 +216,7 @@ class ViewController: UIViewController {
     }
     
     func verifyVoiceprint(audioLink: url,
-                            phrase: [Interval.phrase], start: [Interval.start], stop: [Interval.stop] ) {
+                          phrase: [Interval.phrase], start: [Interval.start], stop: [Interval.stop] ) {
         let url = KnurldRouter.verificationID
         var intervalsDictionary = [AnyObject]()
         _ = {
@@ -238,16 +240,18 @@ class ViewController: UIViewController {
             "Developer-Id" : KnurldRouter.developerID
         ]
         
-        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
-        let encoding = Alamofire.ParameterEncoding.URL
-        (request, _) = encoding.encode(request, parameters: params)
+        if url != "" {
+            var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
+            let encoding = Alamofire.ParameterEncoding.URL
+            (request, _) = encoding.encode(request, parameters: params)
+        }
         
         Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
             .responseJSON { response in
                 print(response)
         }
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
