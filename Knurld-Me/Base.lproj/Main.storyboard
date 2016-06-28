@@ -80,6 +80,13 @@
                                     <action selector="analysis" destination="BYZ-38-t0r" eventType="touchUpInside" id="LZU-sb-M6c"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXd-Yj-leM">
+                                <rect key="frame" x="26" y="429" width="79" height="30"/>
+                                <state key="normal" title="getAnalysis"/>
+                                <connections>
+                                    <action selector="getAnalysis:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TVz-Rt-BLH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

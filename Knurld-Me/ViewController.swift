@@ -76,6 +76,10 @@ class ViewController: UIViewController {
         analysisByUrl("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-1x.wav?dl=1", numWords: "3")
     }
     
+    @IBAction func getAnalysis(sender: UIButton) {
+        getAnalysis()
+    }
+    
     func createAppModel(enrollmentRepeats: Int, vocabulary: [String], verificationLength: Int) {
         let url = "https://api.knurld.io/v1/app-models"
         let params = [
@@ -322,9 +326,26 @@ class ViewController: UIViewController {
         
         Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
             .responseJSON { response in
-                if let taskNameID = response.result.value?["taskName"] as? String {                    
+                if let taskNameID = response.result.value?["taskName"] as? String {
                     KnurldRouter.taskNameID = taskNameID
                     print(KnurldRouter.taskNameID)
+                }
+        }
+    }
+    
+    func getAnalysis() {
+        let url = "https://api.knurld.io/v1/endpointAnalysis/" + KnurldRouter.taskNameID
+        guard KnurldRouter.taskNameID != "" else { print("didn't initiate analysis yet"); return }
+        let headers = [
+            "Authorization": KnurldRouter.accessToken,
+            "Developer-Id" : KnurldRouter.developerID
+        ]
+        
+        Alamofire.request(.GET, url, headers: headers)
+            .responseJSON { response in
+                if let intervalsJson = response.result.value?["intervals"] as? [AnyObject] {
+                    KnurldRouter.intervalsJson = intervalsJson
+                    print(KnurldRouter.intervalsJson)
                 }
         }
     }

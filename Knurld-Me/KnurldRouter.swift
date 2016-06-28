@@ -23,6 +23,7 @@ public enum KnurldRouter: URLRequestConvertible {
     static var verificationID = url()
     static var callID = url()
     static var taskNameID = url()
+    static var intervalsJson = [AnyObject]()
     
     // code below not used
     case CreateConsumer(String, String, String)
