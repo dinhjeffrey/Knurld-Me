@@ -68,6 +68,10 @@ class ViewController: UIViewController {
         initiateCall("12125551212")
     }
     
+    @IBAction func terminateCall(sender: UIButton) {
+        terminateCall()
+    }
+    
     func createAppModel(enrollmentRepeats: Int, vocabulary: [String], verificationLength: Int) {
         let url = "https://api.knurld.io/v1/app-models"
         let params = [
@@ -158,6 +162,7 @@ class ViewController: UIViewController {
     func populateEnrollment(audioLink: url,
                             phrase: [Interval.phrase], start: [Interval.start], stop: [Interval.stop] ) {
         let url = KnurldRouter.enrollmentID
+        guard url != "" else { print("didn't initiate enrollment yet"); return }
         var intervalsDictionary = [AnyObject]()
         for (index, _) in phrase.enumerate() {
             var intervals = [String: AnyObject]()
@@ -178,11 +183,11 @@ class ViewController: UIViewController {
             "Developer-Id" : KnurldRouter.developerID
         ]
         
-        if url != "" {
-            var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
-            let encoding = Alamofire.ParameterEncoding.URL
-            (request, _) = encoding.encode(request, parameters: params)
-        }
+        
+        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
+        let encoding = Alamofire.ParameterEncoding.URL
+        (request, _) = encoding.encode(request, parameters: params)
+        
         
         Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
             .responseJSON { response in
@@ -220,6 +225,7 @@ class ViewController: UIViewController {
     func verifyVoiceprint(audioLink: url,
                           phrase: [Interval.phrase], start: [Interval.start], stop: [Interval.stop] ) {
         let url = KnurldRouter.verificationID
+        guard url != "" else { print("didn't initiate verification yet"); return }
         var intervalsDictionary = [AnyObject]()
         _ = {
             for (index, _) in phrase.enumerate() {
@@ -242,11 +248,10 @@ class ViewController: UIViewController {
             "Developer-Id" : KnurldRouter.developerID
         ]
         
-        if url != "" {
-            var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
-            let encoding = Alamofire.ParameterEncoding.URL
-            (request, _) = encoding.encode(request, parameters: params)
-        }
+        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
+        let encoding = Alamofire.ParameterEncoding.URL
+        (request, _) = encoding.encode(request, parameters: params)
+        
         
         Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
             .responseJSON { response in
@@ -277,7 +282,21 @@ class ViewController: UIViewController {
                     print(KnurldRouter.callID)
                 }
         }
+    }
+    
+    func terminateCall() {
+        let url = KnurldRouter.callID
+        guard url != "" else { print("didn't initiate call yet"); return }
+        let headers = [
+            "Content-Type": "application/json",
+            "Authorization": KnurldRouter.accessToken,
+            "Developer-Id" : KnurldRouter.developerID
+        ]
         
+        Alamofire.request(.POST, url, headers: headers)
+            .responseJSON { response in
+                print(response)
+        }
     }
     
     
