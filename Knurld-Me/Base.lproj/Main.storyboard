@@ -17,13 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBA-sJ-aTz">
-                                <rect key="frame" x="20" y="164" width="134" height="30"/>
-                                <state key="normal" title="populateEnrollment"/>
-                                <connections>
-                                    <action selector="populateEnrollment" destination="BYZ-38-t0r" eventType="touchUpInside" id="VtQ-aa-uQc"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1h-xU-kx9">
                                 <rect key="frame" x="20" y="111" width="117" height="30"/>
                                 <state key="normal" title="createEnrollment"/>
@@ -39,8 +32,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZw-hV-833">
-                                <rect key="frame" x="20" y="258" width="108" height="30"/>
-                                <state key="normal" title="verifyVoiceprint"/>
+                                <rect key="frame" x="20" y="258" width="178" height="30"/>
+                                <state key="normal" title="verifyVoiceprint (wait 10s)"/>
                                 <connections>
                                     <action selector="verifyVoiceprint" destination="BYZ-38-t0r" eventType="touchUpInside" id="wzk-bi-QIG"/>
                                 </connections>
@@ -85,6 +78,13 @@
                                 <state key="normal" title="getAnalysis"/>
                                 <connections>
                                     <action selector="getAnalysis:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TVz-Rt-BLH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBA-sJ-aTz">
+                                <rect key="frame" x="12" y="164" width="196" height="30"/>
+                                <state key="normal" title="populateEnrollment (wait 5s)"/>
+                                <connections>
+                                    <action selector="populateEnrollment" destination="BYZ-38-t0r" eventType="touchUpInside" id="VtQ-aa-uQc"/>
                                 </connections>
                             </button>
                         </subviews>

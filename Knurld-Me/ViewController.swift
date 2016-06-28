@@ -12,8 +12,20 @@ import Alamofire
 class ViewController: UIViewController {
     var json = JSON([])
     typealias url = String
-    
-    
+    func encodeJson(url: String, params: [String: AnyObject]) -> [String: AnyObject] {
+        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
+        let encoding = Alamofire.ParameterEncoding.URL
+        (request, _) = encoding.encode(request, parameters: params)
+        return params
+    }
+    lazy var headers = [
+        "Content-Type": "application/json",
+        "Authorization": accessToken,
+        "Developer-Id" : developerID
+    ]
+    static let developerID = "Bearer: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MDQ4MTY5MDUsInJvbGUiOiJhZG1pbiIsImlkIjoiZWNkMTAwM2YzODJlNWEzZjU0NGQyZjFkY2Y3YWJhN2IiLCJ0ZW5hbnQiOiJ0ZW5hbnRfbXJwdGF4M25vajJ4b25ic21ydncyNXR1bTV3dGk1ZGdvYnRkaTVsYnBpenc0M2xnb3YzeHMzZHVtcnhkazUzciIsIm5hbWUiOiJhZG1pbiJ9.Vu44NwEq6alluVsEMRdDx5pqn28g0Ju0is1EsYDNPtz06wKwlHoZOi2zv8lvmwqu7RV71oxMizIBqDrcxGKP9g"
+    static var accessToken = KnurldRouter.accessToken
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let params = [
@@ -82,22 +94,15 @@ class ViewController: UIViewController {
     
     func createAppModel(enrollmentRepeats: Int, vocabulary: [String], verificationLength: Int) {
         let url = "https://api.knurld.io/v1/app-models"
-        let params = [
+        let params: [String: AnyObject] = [
             "enrollmentRepeats": enrollmentRepeats,
             "vocabulary": vocabulary,
             "verificationLength": verificationLength
         ]
-        let headers = [
-            "Content-Type": "application/json",
-            "Authorization": KnurldRouter.accessToken,
-            "Developer-Id" : KnurldRouter.developerID
-        ]
+
+        let encodedParams = encodeJson(url, params: params)
         
-        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
-        let encoding = Alamofire.ParameterEncoding.URL
-        (request, _) = encoding.encode(request, parameters: params as? [String : AnyObject])
-        
-        Alamofire.request(.POST, url, parameters: params as? [String : AnyObject], headers: headers, encoding: .JSON)
+        Alamofire.request(.POST, url, parameters: encodedParams, headers: headers, encoding: .JSON)
             .responseJSON { response in
                 if let appModelID = response.result.value?["href"] as? String {
                     KnurldRouter.appModelID = appModelID
@@ -114,17 +119,9 @@ class ViewController: UIViewController {
             "password": password
         ]
         
-        let headers = [
-            "Content-Type": "application/json",
-            "Authorization": KnurldRouter.accessToken,
-            "Developer-Id" : KnurldRouter.developerID
-        ]
+        let encodedParams = encodeJson(url, params: params)
         
-        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
-        let encoding = Alamofire.ParameterEncoding.URL
-        (request, _) = encoding.encode(request, parameters: params)
-        
-        Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
+        Alamofire.request(.POST, url, parameters: encodedParams, headers: headers, encoding: .JSON)
             .responseJSON { response in
                 if let consumerID = response.result.value?["href"] as? String {
                     KnurldRouter.consumerID = consumerID
@@ -140,18 +137,9 @@ class ViewController: UIViewController {
             "application": application
         ]
         
-        let headers = [
-            "Content-Type": "application/json",
-            "Authorization": KnurldRouter.accessToken,
-            "Developer-Id" : KnurldRouter.developerID
-        ]
+        let encodedParams = encodeJson(url, params: params)
         
-        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
-        let encoding = Alamofire.ParameterEncoding.URL
-        (request, _) = encoding.encode(request, parameters: params)
-        
-        
-        Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
+        Alamofire.request(.POST, url, parameters: encodedParams, headers: headers, encoding: .JSON)
             .responseJSON { response in
                 if let enrollmentID = response.result.value?["href"] as? String {
                     KnurldRouter.enrollmentID = enrollmentID
@@ -185,19 +173,9 @@ class ViewController: UIViewController {
             "intervals": intervalsDictionary
         ]
         
-        let headers = [
-            "Content-Type": "application/json",
-            "Authorization":  KnurldRouter.accessToken,
-            "Developer-Id" : KnurldRouter.developerID
-        ]
+        let encodedParams = encodeJson(url, params: params)
         
-        
-        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
-        let encoding = Alamofire.ParameterEncoding.URL
-        (request, _) = encoding.encode(request, parameters: params)
-        
-        
-        Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
+        Alamofire.request(.POST, url, parameters: encodedParams, headers: headers, encoding: .JSON)
             .responseJSON { response in
                 print(KnurldRouter.enrollmentID)
         }
@@ -210,18 +188,9 @@ class ViewController: UIViewController {
             "application": application
         ]
         
-        let headers = [
-            "Content-Type": "application/json",
-            "Authorization": KnurldRouter.accessToken,
-            "Developer-Id" : KnurldRouter.developerID
-        ]
+        let encodedParams = encodeJson(url, params: params)
         
-        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
-        let encoding = Alamofire.ParameterEncoding.URL
-        (request, _) = encoding.encode(request, parameters: params)
-        
-        
-        Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
+        Alamofire.request(.POST, url, parameters: encodedParams, headers: headers, encoding: .JSON)
             .responseJSON { response in
                 if let verificationID = response.result.value?["href"] as? String {
                     KnurldRouter.verificationID = verificationID
@@ -235,35 +204,26 @@ class ViewController: UIViewController {
         let url = KnurldRouter.verificationID
         guard url != "" else { print("didn't initiate verification yet"); return }
         var intervalsDictionary = [AnyObject]()
-        _ = {
-            for (index, _) in phrase.enumerate() {
-                var intervals = [String: AnyObject]()
-                intervals["phrase"] = phrase[index]
-                intervals["start"] = start[index]
-                intervals["stop"] = stop[index]
-                intervalsDictionary.append(intervals)
-            }
-        }()
+        for (index, _) in phrase.enumerate() {
+            var intervals = [String: AnyObject]()
+            intervals["phrase"] = phrase[index]
+            intervals["start"] = start[index]
+            intervals["stop"] = stop[index]
+            intervalsDictionary.append(intervals)
+        }
         
         let params : [String: AnyObject] = [
             "verification.wav": audioLink,
             "intervals": intervalsDictionary
         ]
         
-        let headers = [
-            "Content-Type": "application/json",
-            "Authorization":  KnurldRouter.accessToken,
-            "Developer-Id" : KnurldRouter.developerID
-        ]
+        let encodedParams = encodeJson(url, params: params)
         
-        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
-        let encoding = Alamofire.ParameterEncoding.URL
-        (request, _) = encoding.encode(request, parameters: params)
-        
-        
-        Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
+        Alamofire.request(.POST, url, parameters: encodedParams, headers: headers, encoding: .JSON)
             .responseJSON { response in
-                print(response)
+                if let verificationID = response.result.value?["href"] as? String {
+                    print(verificationID)
+                }
         }
     }
     
@@ -272,18 +232,10 @@ class ViewController: UIViewController {
         let params = [
             "number": phoneNumber
         ]
+
+        let encodedParams = encodeJson(url, params: params)
         
-        let headers = [
-            "Content-Type": "application/json",
-            "Authorization": KnurldRouter.accessToken,
-            "Developer-Id" : KnurldRouter.developerID
-        ]
-        
-        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
-        let encoding = Alamofire.ParameterEncoding.URL
-        (request, _) = encoding.encode(request, parameters: params)
-        
-        Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
+        Alamofire.request(.POST, url, parameters: encodedParams, headers: headers, encoding: .JSON)
             .responseJSON { response in
                 if let callID = response.result.value?["href"] as? String {
                     KnurldRouter.callID = callID
@@ -295,11 +247,6 @@ class ViewController: UIViewController {
     func terminateCall() {
         let url = KnurldRouter.callID
         guard url != "" else { print("didn't initiate call yet"); return }
-        let headers = [
-            "Content-Type": "application/json",
-            "Authorization": KnurldRouter.accessToken,
-            "Developer-Id" : KnurldRouter.developerID
-        ]
         
         Alamofire.request(.POST, url, headers: headers)
             .responseJSON { response in
@@ -314,17 +261,9 @@ class ViewController: UIViewController {
             "words": numWords
         ]
         
-        let headers = [
-            "Content-Type": "application/json",
-            "Authorization": KnurldRouter.accessToken,
-            "Developer-Id" : KnurldRouter.developerID
-        ]
+        let encodedParams = encodeJson(url, params: params)
         
-        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
-        let encoding = Alamofire.ParameterEncoding.URL
-        (request, _) = encoding.encode(request, parameters: params)
-        
-        Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
+        Alamofire.request(.POST, url, parameters: encodedParams, headers: headers, encoding: .JSON)
             .responseJSON { response in
                 if let taskNameID = response.result.value?["taskName"] as? String {
                     KnurldRouter.taskNameID = taskNameID
