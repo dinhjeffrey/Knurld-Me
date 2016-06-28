@@ -22,6 +22,7 @@ public enum KnurldRouter: URLRequestConvertible {
     static var enrollmentID = url()
     static var verificationID = url()
     static var callID = url()
+    static var taskNameID = url()
     
     // code below not used
     case CreateConsumer(String, String, String)

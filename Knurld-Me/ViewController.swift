@@ -322,7 +322,10 @@ class ViewController: UIViewController {
         
         Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
             .responseJSON { response in
-                print(response)
+                if let taskNameID = response.result.value?["taskName"] as? String {                    
+                    KnurldRouter.taskNameID = taskNameID
+                    print(KnurldRouter.taskNameID)
+                }
         }
     }
     
