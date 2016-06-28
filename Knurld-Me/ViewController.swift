@@ -72,6 +72,10 @@ class ViewController: UIViewController {
         terminateCall()
     }
     
+    @IBAction func analysis() {
+        analysisByUrl("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-1x.wav?dl=1", numWords: "3")
+    }
+    
     func createAppModel(enrollmentRepeats: Int, vocabulary: [String], verificationLength: Int) {
         let url = "https://api.knurld.io/v1/app-models"
         let params = [
@@ -294,6 +298,29 @@ class ViewController: UIViewController {
         ]
         
         Alamofire.request(.POST, url, headers: headers)
+            .responseJSON { response in
+                print(response)
+        }
+    }
+    
+    func analysisByUrl(audioUrl: url, numWords: String) {
+        let url = "https://api.knurld.io/v1/endpointAnalysis/url"
+        let params = [
+            "audioUrl": audioUrl,
+            "words": numWords
+        ]
+        
+        let headers = [
+            "Content-Type": "application/json",
+            "Authorization": KnurldRouter.accessToken,
+            "Developer-Id" : KnurldRouter.developerID
+        ]
+        
+        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
+        let encoding = Alamofire.ParameterEncoding.URL
+        (request, _) = encoding.encode(request, parameters: params)
+        
+        Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
             .responseJSON { response in
                 print(response)
         }

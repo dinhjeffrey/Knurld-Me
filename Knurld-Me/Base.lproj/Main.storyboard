@@ -73,6 +73,13 @@
                                     <action selector="terminateCall:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z6j-yj-HCy"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYE-sz-ZMr">
+                                <rect key="frame" x="38" y="384" width="55" height="30"/>
+                                <state key="normal" title="analysis"/>
+                                <connections>
+                                    <action selector="analysis" destination="BYZ-38-t0r" eventType="touchUpInside" id="LZU-sb-M6c"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
