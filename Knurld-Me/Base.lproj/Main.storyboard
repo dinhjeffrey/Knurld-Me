@@ -31,13 +31,6 @@
                                     <action selector="createEnrollment" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kk2-UI-pes"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCY-Te-ghC">
-                                <rect key="frame" x="20" y="51" width="114" height="30"/>
-                                <state key="normal" title="createConsumer"/>
-                                <connections>
-                                    <action selector="createConsumer" destination="BYZ-38-t0r" eventType="touchUpInside" id="r2z-au-TbY"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLw-L2-LgN">
                                 <rect key="frame" x="24" y="13" width="113" height="30"/>
                                 <state key="normal" title="createAppModel"/>
@@ -57,6 +50,13 @@
                                 <state key="normal" title="createVerification - 10s"/>
                                 <connections>
                                     <action selector="createVerification" destination="BYZ-38-t0r" eventType="touchUpInside" id="CHK-UJ-bUo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCY-Te-ghC">
+                                <rect key="frame" x="24" y="51" width="187" height="30"/>
+                                <state key="normal" title="createConsumer - disabled"/>
+                                <connections>
+                                    <action selector="createConsumer" destination="BYZ-38-t0r" eventType="touchUpInside" id="r2z-au-TbY"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -18,7 +18,7 @@ public enum KnurldRouter: URLRequestConvertible {
     static let developerID = "Bearer: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MDQ4MTY5MDUsInJvbGUiOiJhZG1pbiIsImlkIjoiZWNkMTAwM2YzODJlNWEzZjU0NGQyZjFkY2Y3YWJhN2IiLCJ0ZW5hbnQiOiJ0ZW5hbnRfbXJwdGF4M25vajJ4b25ic21ydncyNXR1bTV3dGk1ZGdvYnRkaTVsYnBpenc0M2xnb3YzeHMzZHVtcnhkazUzciIsIm5hbWUiOiJhZG1pbiJ9.Vu44NwEq6alluVsEMRdDx5pqn28g0Ju0is1EsYDNPtz06wKwlHoZOi2zv8lvmwqu7RV71oxMizIBqDrcxGKP9g"
     static var accessToken = String()
     static var appModelID = url()
-    static var consumerID = url()
+    static var consumerID = "https://api.knurld.io/v1/consumers/ecd1003f382e5a3f544d2f1dcfb4039f" // username: "test2", gender: "M", password: "test"
     static var enrollmentID = url()
     static var verificationID = url()
     

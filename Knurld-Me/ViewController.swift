@@ -42,13 +42,13 @@ class ViewController: UIViewController {
     }
     // change username everytime
     @IBAction func createConsumer() {
-        createConsumer("test3", gender: "M", password: "test")
+        //createConsumer("test14", gender: "M", password: "test")
     }
     @IBAction func createEnrollment() {
         createEnrollment(KnurldRouter.consumerID, application: KnurldRouter.appModelID)
     }
     @IBAction func populateEnrollment() {
-        populateEnrollment("https://www.dropbox.com/s/pxldjp3r3ppm3qs/audio_recording_audioInputwav%20%281%29.wav?dl=1", phrase: ["Oval", "Oval", "Oval", "Circle", "Circle", "Circle", "Athens", "Athens", "Athens"], start: [929, 2692, 4792, 6672, 7792, 8832, 11052, 12102, 12962], stop: [1742, 3472, 5532, 7572, 8392, 9582, 11812, 12772, 13772])
+        populateEnrollment("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-1x.wav?dl=1", phrase: ["Oval", "Oval", "Oval", "Circle", "Circle", "Circle", "Athens", "Athens", "Athens"], start: [929, 2692, 4792, 6672, 7792, 8832, 11052, 12102, 12962], stop: [1742, 3472, 5532, 7572, 8392, 9582, 11812, 12772, 13772])
     }
     
     @IBAction func createVerification() {
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func verifyVoiceprint() {
-        verifyVoiceprint("https://www.dropbox.com/s/pxldjp3r3ppm3qs/audio_recording_audioInputwav%20%281%29.wav?dl=1", phrase: ["Oval", "Circle", "Athens"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
+        verifyVoiceprint("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-3x.wav?dl=1", phrase: ["Oval", "Circle", "Athens"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
     }
     func createAppModel(enrollmentRepeats: Int, vocabulary: [String], verificationLength: Int) {
         let url = "https://api.knurld.io/v1/app-models"
@@ -104,6 +104,7 @@ class ViewController: UIViewController {
         
         Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
             .responseJSON { response in
+                print(response)
                 if let consumerID = response.result.value?["href"] as? String {
                     KnurldRouter.consumerID = consumerID
                     print(KnurldRouter.consumerID)
