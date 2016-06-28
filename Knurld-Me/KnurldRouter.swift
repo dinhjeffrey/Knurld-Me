@@ -11,13 +11,18 @@ import Alamofire
 
 
 public enum KnurldRouter: URLRequestConvertible {
+    typealias url = String
     static let baseURLPath = "https://api.knurld.io/v1"
     static let clientID = "MXUAwA6YvLhQx0pFN35ltPfXE6B1SdTF"
     static let clientSecret = "RvAhC2QAZV9HAOAm"
     static let developerID = "Bearer: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MDQ4MTY5MDUsInJvbGUiOiJhZG1pbiIsImlkIjoiZWNkMTAwM2YzODJlNWEzZjU0NGQyZjFkY2Y3YWJhN2IiLCJ0ZW5hbnQiOiJ0ZW5hbnRfbXJwdGF4M25vajJ4b25ic21ydncyNXR1bTV3dGk1ZGdvYnRkaTVsYnBpenc0M2xnb3YzeHMzZHVtcnhkazUzciIsIm5hbWUiOiJhZG1pbiJ9.Vu44NwEq6alluVsEMRdDx5pqn28g0Ju0is1EsYDNPtz06wKwlHoZOi2zv8lvmwqu7RV71oxMizIBqDrcxGKP9g"
     static var accessToken = String()
-    static var enrollmentID = String()
+    static var appModelID = url()
+    static var consumerID = url()
+    static var enrollmentID = url()
+    static var verificationID = url()
     
+    // code below not used
     case CreateConsumer(String, String, String)
     case CreateEnrollment(String, String)
     case PopulateEnrollment(String, String, Int, Int, Int, Int, Int, Int,

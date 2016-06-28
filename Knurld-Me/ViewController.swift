@@ -11,6 +11,8 @@ import Alamofire
 
 class ViewController: UIViewController {
     var json = JSON([])
+    typealias url = String
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,49 +30,218 @@ class ViewController: UIViewController {
         Alamofire.request(.POST, url, parameters: params, headers: headers)
             .responseJSON { response in
                 
-                if let accessToken = response.result.value?["access_token"] {
-                    KnurldRouter.accessToken = "Bearer " + (accessToken as! String)
+                if let accessToken = response.result.value?["access_token"] as? String {
+                    KnurldRouter.accessToken = "Bearer " + accessToken
                     print(KnurldRouter.accessToken)
                 }
         }
     }
     
+    @IBAction func createAppModel() {
+        createAppModel(3, vocabulary: ["Oval", "Circle", "Athens"], verificationLength: 3)
+    }
+    // change username everytime
     @IBAction func createConsumer() {
-        createConsumer("YoureCute", gender: "M", password: "YoureCute")
+        createConsumer("test3", gender: "M", password: "test")
     }
     @IBAction func createEnrollment() {
-        createEnrollment("https://api.knurld.io/v1/consumers/ecd1003f382e5a3f544d2f1dcf7afa33", application: "https://api.knurld.io/v1/app-models/ecd1003f382e5a3f544d2f1dcf7af492")
+        createEnrollment(KnurldRouter.consumerID, application: KnurldRouter.appModelID)
     }
     @IBAction func populateEnrollment() {
-        populateEnrollment("https://www.dropbox.com/s/pxldjp3r3ppm3qs/audio_recording_audioInputwav%20%281%29.wav?dl=1", phrase1: "Canada", start1: 929, stop1: 1742, start2: 2692, stop2: 3472, start3: 4792, stop3: 5532, phrase2: "Canada", start4: 6672, stop4: 7572, start5: 7792, stop5: 8392, start6: 8832, stop6: 9582, phrase3: "Circle", start7: 11052, stop7: 11812, start8: 12102, stop8: 12772, start9: 12962, stop9: 13772)
+        populateEnrollment("https://www.dropbox.com/s/pxldjp3r3ppm3qs/audio_recording_audioInputwav%20%281%29.wav?dl=1", phrase: ["Oval", "Oval", "Oval", "Circle", "Circle", "Circle", "Athens", "Athens", "Athens"], start: [929, 2692, 4792, 6672, 7792, 8832, 11052, 12102, 12962], stop: [1742, 3472, 5532, 7572, 8392, 9582, 11812, 12772, 13772])
+    }
+    
+    @IBAction func createVerification() {
+        createVerification(KnurldRouter.consumerID, application: KnurldRouter.appModelID)
+    }
+    
+    @IBAction func verifyVoiceprint() {
+        verifyVoiceprint("https://www.dropbox.com/s/pxldjp3r3ppm3qs/audio_recording_audioInputwav%20%281%29.wav?dl=1", phrase: ["Oval", "Circle", "Athens"], start: [929, 2692, 4792], stop: [1742, 3472, 5532])
+    }
+    func createAppModel(enrollmentRepeats: Int, vocabulary: [String], verificationLength: Int) {
+        let url = "https://api.knurld.io/v1/app-models"
+        let params = [
+            "enrollmentRepeats": enrollmentRepeats,
+            "vocabulary": vocabulary,
+            "verificationLength": verificationLength
+        ]
+        let headers = [
+            "Content-Type": "application/json",
+            "Authorization": KnurldRouter.accessToken,
+            "Developer-Id" : KnurldRouter.developerID
+        ]
+    
+        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
+        let encoding = Alamofire.ParameterEncoding.URL
+        (request, _) = encoding.encode(request, parameters: params as? [String : AnyObject])
+        
+        Alamofire.request(.POST, url, parameters: params as? [String : AnyObject], headers: headers, encoding: .JSON)
+            .responseJSON { response in
+                if let appModelID = response.result.value?["href"] as? String {
+                    KnurldRouter.appModelID = appModelID 
+                    print(KnurldRouter.appModelID)
+                }
+        }
     }
     
     func createConsumer(name: String, gender: String, password: String){
-        Alamofire.request(KnurldRouter.CreateConsumer(name, gender, password))
+        let url = "https://api.knurld.io/v1/consumers"
+        let params = [
+            "username": name,
+            "gender": gender,
+            "password": password
+        ]
+        
+        let headers = [
+            "Content-Type": "application/json",
+            "Authorization": KnurldRouter.accessToken,
+            "Developer-Id" : KnurldRouter.developerID
+        ]
+        
+        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
+        let encoding = Alamofire.ParameterEncoding.URL
+        (request, _) = encoding.encode(request, parameters: params)
+        
+        Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
             .responseJSON { response in
-                print(response)
-        }
-    }
-    
-    func createEnrollment(consumer: String, application: String) {
-        Alamofire.request(KnurldRouter.CreateEnrollment(consumer, application))
-            .responseJSON { response in
-                if let enrollmentID = response.result.value?["href"] {
-                    KnurldRouter.enrollmentID = enrollmentID as! String
+                if let consumerID = response.result.value?["href"] as? String {
+                    KnurldRouter.consumerID = consumerID
+                    print(KnurldRouter.consumerID)
                 }
-                print(response)
         }
     }
     
-    func populateEnrollment(audioLink: String,
-                            phrase1: String, start1: Int, stop1: Int, start2: Int, stop2: Int, start3: Int, stop3: Int,
-                            phrase2: String, start4: Int, stop4: Int, start5: Int, stop5: Int, start6: Int, stop6: Int,
-                            phrase3: String, start7: Int, stop7: Int, start8: Int, stop8: Int, start9: Int, stop9: Int ) {
-        Alamofire.request(KnurldRouter.PopulateEnrollment(audioLink, phrase1, start1, stop1, start2, stop2, start3, stop3, phrase2, start4, stop4, start5, stop5, start6, stop6, phrase3, start7, stop7, start8, stop8, start9, stop9))
+    func createEnrollment(consumer: url, application: url) {
+        let url = "https://api.knurld.io/v1/enrollments/"
+        let params = [
+            "consumer": consumer,
+            "application": application
+        ]
+        
+        let headers = [
+            "Content-Type": "application/json",
+            "Authorization": KnurldRouter.accessToken,
+            "Developer-Id" : KnurldRouter.developerID
+        ]
+        
+        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
+        let encoding = Alamofire.ParameterEncoding.URL
+        (request, _) = encoding.encode(request, parameters: params)
+        
+        
+        Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
+            .responseJSON { response in
+                if let enrollmentID = response.result.value?["href"] as? String {
+                    KnurldRouter.enrollmentID = enrollmentID
+                    print(KnurldRouter.enrollmentID)
+                }
+        }
+    }
+    
+    typealias TimePosition = Int
+    struct Interval {
+        typealias phrase = String
+        typealias start = TimePosition
+        typealias stop = TimePosition
+    }
+    
+    func populateEnrollment(audioLink: url,
+                            phrase: [Interval.phrase], start: [Interval.start], stop: [Interval.stop] ) {
+        let url = KnurldRouter.enrollmentID
+        var intervalsDictionary = [AnyObject]()
+        _ = {
+            for (index, _) in phrase.enumerate() {
+                var intervals = [String: AnyObject]()
+                intervals["phrase"] = phrase[index]
+                intervals["start"] = start[index]
+                intervals["stop"] = stop[index]
+                intervalsDictionary.append(intervals)
+            }
+        }()
+        
+        let params : [String: AnyObject] = [
+            "enrollment.wav": audioLink,
+            "intervals": intervalsDictionary
+        ]
+        
+        let headers = [
+            "Content-Type": "application/json",
+            "Authorization":  KnurldRouter.accessToken,
+            "Developer-Id" : KnurldRouter.developerID
+        ]
+        
+        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
+        let encoding = Alamofire.ParameterEncoding.URL
+        (request, _) = encoding.encode(request, parameters: params)
+        
+        Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
+            .responseJSON { response in
+                print(KnurldRouter.enrollmentID)
+        }
+    }
+    // wait 10 seconds after populateEnrollment to initiate createVerification
+    func createVerification(consumer: url, application: url) {
+        let url = "https://api.knurld.io/v1/verifications"
+        let params = [
+            "consumer": consumer,
+            "application": application
+        ]
+        
+        let headers = [
+            "Content-Type": "application/json",
+            "Authorization": KnurldRouter.accessToken,
+            "Developer-Id" : KnurldRouter.developerID
+        ]
+        
+        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
+        let encoding = Alamofire.ParameterEncoding.URL
+        (request, _) = encoding.encode(request, parameters: params)
+        
+        
+        Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
+            .responseJSON { response in
+                if let verificationID = response.result.value?["href"] as? String {
+                    KnurldRouter.verificationID = verificationID
+                    print(KnurldRouter.verificationID)
+                }
+        }
+    }
+    
+    func verifyVoiceprint(audioLink: url,
+                            phrase: [Interval.phrase], start: [Interval.start], stop: [Interval.stop] ) {
+        let url = KnurldRouter.verificationID
+        var intervalsDictionary = [AnyObject]()
+        _ = {
+            for (index, _) in phrase.enumerate() {
+                var intervals = [String: AnyObject]()
+                intervals["phrase"] = phrase[index]
+                intervals["start"] = start[index]
+                intervals["stop"] = stop[index]
+                intervalsDictionary.append(intervals)
+            }
+        }()
+        
+        let params : [String: AnyObject] = [
+            "verification.wav": audioLink,
+            "intervals": intervalsDictionary
+        ]
+        
+        let headers = [
+            "Content-Type": "application/json",
+            "Authorization":  KnurldRouter.accessToken,
+            "Developer-Id" : KnurldRouter.developerID
+        ]
+        
+        var request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: url))
+        let encoding = Alamofire.ParameterEncoding.URL
+        (request, _) = encoding.encode(request, parameters: params)
+        
+        Alamofire.request(.POST, url, parameters: params, headers: headers, encoding: .JSON)
             .responseJSON { response in
                 print(response)
         }
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

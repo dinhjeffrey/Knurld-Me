@@ -38,6 +38,27 @@
                                     <action selector="createConsumer" destination="BYZ-38-t0r" eventType="touchUpInside" id="r2z-au-TbY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLw-L2-LgN">
+                                <rect key="frame" x="24" y="13" width="113" height="30"/>
+                                <state key="normal" title="createAppModel"/>
+                                <connections>
+                                    <action selector="createAppModel" destination="BYZ-38-t0r" eventType="touchUpInside" id="ae2-gH-bcY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZw-hV-833">
+                                <rect key="frame" x="20" y="258" width="108" height="30"/>
+                                <state key="normal" title="verifyVoiceprint"/>
+                                <connections>
+                                    <action selector="verifyVoiceprint" destination="BYZ-38-t0r" eventType="touchUpInside" id="wzk-bi-QIG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8F-vl-VJb">
+                                <rect key="frame" x="8" y="209" width="159" height="30"/>
+                                <state key="normal" title="createVerification - 10s"/>
+                                <connections>
+                                    <action selector="createVerification" destination="BYZ-38-t0r" eventType="touchUpInside" id="CHK-UJ-bUo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
