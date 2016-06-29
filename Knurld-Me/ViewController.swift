@@ -90,7 +90,8 @@ class ViewController: UIViewController {
         analysisByUrl("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-1x.wav?dl=1", numWords: "3")
     }
     @IBAction func analysisFile() {
-        analysisByFile("/Users/Jeffrey/Library/Developer/CoreSimulator/Devices/FCC00A93-51BB-4A08-9CE9-353B2CA7D53C/data/Containers/Data/Application/28DA96CA-06B8-47A7-9FA0-787B9A354B84/oval-circle-athens-1x.wav", numWords: "3")
+//        analysisByFile("/Users/Jeffrey/Library/Developer/CoreSimulator/Devices/FCC00A93-51BB-4A08-9CE9-353B2CA7D53C/data/Containers/Data/Application/28DA96CA-06B8-47A7-9FA0-787B9A354B84/oval-circle-athens-1x.wav", numWords: "3")
+        print(RecordVC.)
     }
     
     @IBAction func getAnalysis(sender: UIButton) {

@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
             endingLineNumber = "63"
-            landmarkName = "populateEnrollment()"
+            landmarkName = "createEnrollment()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
             endingLineNumber = "160"
-            landmarkName = "ViewController"
+            landmarkName = "Interval"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
