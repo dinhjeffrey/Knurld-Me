@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyDropbox
 
 class ViewController: UIViewController {
+    var dropboxLink = url()
     var audioPath = NSURL()
     
     var json = JSON([])
@@ -33,7 +34,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         //let audioData = NSData(contentsOfURL: audioPath)
-                
+        
     }
     
     @IBAction func createAccessToken(sender: UIButton) {
@@ -76,7 +77,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func analysisUrl() {
-        //analysisByUrl("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-1x.wav?dl=1", numWords: "3")
+        analysisByUrl(dropboxLink, numWords: "3")
     }
     @IBAction func analysisFile() {
         analysisByFile(NSData(contentsOfURL: audioPath)!, numWords: "3")
@@ -87,6 +88,9 @@ class ViewController: UIViewController {
         getAnalysis()
     }
     
+    @IBAction func uploadAndSharePressed() {
+        uploadAndShare()
+    }
     func createAccessToken() {
         let params = [
             "client_id": KnurldRouter.clientID,
@@ -273,6 +277,7 @@ class ViewController: UIViewController {
     }
     
     func analysisByUrl(audioUrl: url, numWords: String) {
+        guard dropboxLink != "" else {print("didn't upload and share wav file to dropbox");return}
         let url = "https://api.knurld.io/v1/endpointAnalysis/url"
         let params = [
             "audioUrl": audioUrl,
@@ -283,6 +288,7 @@ class ViewController: UIViewController {
         
         Alamofire.request(.POST, url, parameters: encodedParams, headers: headers, encoding: .JSON)
             .responseJSON { response in
+                print(response)
                 if let taskNameID = response.result.value?["taskName"] as? String {
                     KnurldRouter.taskNameID = taskNameID
                     print(KnurldRouter.taskNameID)
@@ -300,17 +306,17 @@ class ViewController: UIViewController {
             "Developer-Id": ViewController.developerID,
             "Content-Type": "multipart/form-data"
         ]
-//        let params = [
-//            "filedata": filedata,
-//            "num_words": numWords
-//        ]
+        //        let params = [
+        //            "filedata": filedata,
+        //            "num_words": numWords
+        //        ]
         
         Alamofire.upload(.POST, url, headers: headers,
                          multipartFormData: { multipartFormData in
                             multipartFormData.appendBodyPart(data: filedata, name: "fileData", fileName: "unicorn.wav", mimeType: "audio/wav")
-//                            multipartFormData.appendBodyPart(data: params["filedata"]!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, name :"filedata")
-//                            multipartFormData.appendBodyPart(data: params["num_words"]!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, name :"num_words")
-                            },
+                            //                            multipartFormData.appendBodyPart(data: params["filedata"]!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, name :"filedata")
+                            //                            multipartFormData.appendBodyPart(data: params["num_words"]!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, name :"num_words")
+            },
                          encodingCompletion: { encodingResult in
                             switch encodingResult {
                             case .Success(let upload, _, _):
@@ -337,6 +343,74 @@ class ViewController: UIViewController {
                     print(KnurldRouter.intervalsJson)
                 }
         }
+    }
+    
+    func uploadAndShare() {
+        // Verify user is logged into Dropbox
+        if let client = Dropbox.authorizedClient {
+            
+            // Get the current user's account info
+            client.users.getCurrentAccount().response { response, error in
+                print("*** Get current account ***")
+                if let account = response {
+                    print("Hello \(account.name.givenName)!")
+                } else {
+                    print(error!)
+                }
+            }
+            
+            // List folder
+            client.files.listFolder(path: "").response { response, error in
+                print("*** List folder ***")
+                if let result = response {
+                    print("Folder contents:")
+                    for entry in result.entries {
+                        print(entry.name)
+                    }
+                } else {
+                    print(error!)
+                }
+            }
+            
+            // Upload a file
+            client.files.upload(path: "/recordedAudio.wav", body: NSData(contentsOfURL: audioPath)!).response { response, error in
+                if let metadata = response {
+                    print("*** Upload file ****")
+                    print("Uploaded file name: \(metadata.name)")
+                    print("Uploaded file revision: \(metadata.rev)")
+                    
+                    // Get file (or folder) metadata
+                    client.files.getMetadata(path: "/recordedAudio.wav").response { response, error in
+                        print("*** Get file metadata ***")
+                        if let metadata = response {
+                            if let file = metadata as? Files.FileMetadata {
+                                print("This is a file with path: \(file.pathLower)")
+                                print("File size: \(file.size)")
+                            } else if let folder = metadata as? Files.FolderMetadata {
+                                print("This is a folder with path: \(folder.pathLower)")
+                            }
+                        } else {
+                            print(error!)
+                        }
+                    }
+                    
+                }
+            }
+        }
+        // Sharing
+        guard Dropbox.authorizedClient != nil else {print("login first before sharing!");return}
+        Dropbox.authorizedClient!.sharing.createSharedLink(path: "/recordedAudio.wav").response({ response, error in
+            if let link = response {
+                print(link.url)
+                self.dropboxLink = link.url
+                self.dropboxLink.removeAtIndex(self.dropboxLink.endIndex.advancedBy(-1))
+                self.dropboxLink.insert("1", atIndex: self.dropboxLink.endIndex)
+                print("dropboxLink is \(self.dropboxLink)")
+            } else {
+                print(error!)
+            }
+        })
+        
     }
     
     

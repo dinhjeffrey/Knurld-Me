@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Dropbox View Controller-->
@@ -38,8 +39,15 @@
                                     <action selector="dropboxStuffPressed" destination="Ptb-IB-Wop" eventType="touchUpInside" id="eCc-aY-QJv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l1J-GM-ZGM">
+                                <rect key="frame" x="32" y="211" width="97" height="30"/>
+                                <state key="normal" title="share hello.txt"/>
+                                <connections>
+                                    <action selector="sharePressed:" destination="Ptb-IB-Wop" eventType="touchUpInside" id="F6m-TK-rhx"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8x-5e-STe">
-                                <rect key="frame" x="52" y="254" width="44" height="30"/>
+                                <rect key="frame" x="52" y="315" width="44" height="30"/>
                                 <state key="normal" title="Segue"/>
                                 <connections>
                                     <segue destination="xj7-eC-SRU" kind="show" id="VeA-QM-RoZ"/>
@@ -120,107 +128,144 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1h-xU-kx9">
-                                <rect key="frame" x="26" y="126" width="117" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1h-xU-kx9">
+                                <rect key="frame" x="26" y="142" width="117" height="30"/>
                                 <state key="normal" title="createEnrollment"/>
                                 <connections>
                                     <action selector="createEnrollment" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kk2-UI-pes"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLw-L2-LgN">
-                                <rect key="frame" x="20" y="45" width="113" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLw-L2-LgN">
+                                <rect key="frame" x="26" y="66" width="113" height="30"/>
                                 <state key="normal" title="createAppModel"/>
                                 <connections>
                                     <action selector="createAppModel" destination="BYZ-38-t0r" eventType="touchUpInside" id="ae2-gH-bcY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZw-hV-833">
-                                <rect key="frame" x="20" y="258" width="178" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZw-hV-833">
+                                <rect key="frame" x="26" y="256" width="178" height="30"/>
                                 <state key="normal" title="verifyVoiceprint (wait 10s)"/>
                                 <connections>
                                     <action selector="verifyVoiceprint" destination="BYZ-38-t0r" eventType="touchUpInside" id="wzk-bi-QIG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8F-vl-VJb">
-                                <rect key="frame" x="28" y="209" width="120" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8F-vl-VJb">
+                                <rect key="frame" x="26" y="218" width="120" height="30"/>
                                 <state key="normal" title="createVerification"/>
                                 <connections>
                                     <action selector="createVerification" destination="BYZ-38-t0r" eventType="touchUpInside" id="CHK-UJ-bUo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCY-Te-ghC">
-                                <rect key="frame" x="26" y="88" width="187" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCY-Te-ghC">
+                                <rect key="frame" x="26" y="104" width="187" height="30"/>
                                 <state key="normal" title="createConsumer - disabled"/>
                                 <connections>
                                     <action selector="createConsumer" destination="BYZ-38-t0r" eventType="touchUpInside" id="r2z-au-TbY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2F-eK-YKL">
-                                <rect key="frame" x="29" y="308" width="72" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2F-eK-YKL">
+                                <rect key="frame" x="26" y="294" width="72" height="30"/>
                                 <state key="normal" title="initiateCall"/>
                                 <connections>
                                     <action selector="initiateCall" destination="BYZ-38-t0r" eventType="touchUpInside" id="wgp-d4-VzR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBN-qb-Hpg">
-                                <rect key="frame" x="20" y="346" width="91" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBN-qb-Hpg">
+                                <rect key="frame" x="26" y="332" width="91" height="30"/>
                                 <state key="normal" title="terminateCall"/>
                                 <connections>
                                     <action selector="terminateCall:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z6j-yj-HCy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXd-Yj-leM">
-                                <rect key="frame" x="26" y="453" width="79" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXd-Yj-leM">
+                                <rect key="frame" x="26" y="446" width="79" height="30"/>
                                 <state key="normal" title="getAnalysis"/>
                                 <connections>
                                     <action selector="getAnalysis:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TVz-Rt-BLH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBA-sJ-aTz">
-                                <rect key="frame" x="26" y="164" width="196" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBA-sJ-aTz">
+                                <rect key="frame" x="26" y="180" width="196" height="30"/>
                                 <state key="normal" title="populateEnrollment (wait 5s)"/>
                                 <connections>
                                     <action selector="populateEnrollment" destination="BYZ-38-t0r" eventType="touchUpInside" id="VtQ-aa-uQc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAe-BE-yrW">
-                                <rect key="frame" x="26" y="415" width="79" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAe-BE-yrW">
+                                <rect key="frame" x="26" y="408" width="79" height="30"/>
                                 <state key="normal" title="analysisFile"/>
                                 <connections>
                                     <action selector="analysisFile" destination="BYZ-38-t0r" eventType="touchUpInside" id="ymu-L8-nkX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnj-Ap-z5T">
-                                <rect key="frame" x="31" y="507" width="42" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnj-Ap-z5T">
+                                <rect key="frame" x="26" y="484" width="42" height="30"/>
                                 <state key="normal" title="segue"/>
                                 <connections>
                                     <segue destination="xj7-eC-SRU" kind="show" id="ZSh-O4-yAK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fH-Rc-cCu">
-                                <rect key="frame" x="26" y="7" width="133" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fH-Rc-cCu">
+                                <rect key="frame" x="26" y="28" width="133" height="30"/>
                                 <state key="normal" title="createAccessToken"/>
                                 <connections>
                                     <action selector="createAccessToken:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tEm-Cb-mfv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYE-sz-ZMr">
-                                <rect key="frame" x="20" y="384" width="148" height="30"/>
-                                <state key="normal" title="analysisUrl - disabled"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYE-sz-ZMr">
+                                <rect key="frame" x="26" y="370" width="75" height="30"/>
+                                <state key="normal" title="analysisUrl"/>
                                 <connections>
                                     <action selector="analysisUrl" destination="BYZ-38-t0r" eventType="touchUpInside" id="sOg-BC-Dvd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EhN-jr-IpQ">
+                                <rect key="frame" x="373" y="28" width="207" height="30"/>
+                                <state key="normal" title="upload and share dropbox link"/>
+                                <connections>
+                                    <action selector="uploadAndSharePressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="MZW-jo-lfP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="T1h-xU-kx9" firstAttribute="leading" secondItem="GBA-sJ-aTz" secondAttribute="leading" id="1gw-LW-1SY"/>
+                            <constraint firstItem="8fH-Rc-cCu" firstAttribute="baseline" secondItem="EhN-jr-IpQ" secondAttribute="baseline" id="36j-Oz-MWs"/>
+                            <constraint firstItem="T1h-xU-kx9" firstAttribute="top" secondItem="cCY-Te-ghC" secondAttribute="bottom" constant="8" symbolic="YES" id="3MR-jo-RpG"/>
+                            <constraint firstItem="GBA-sJ-aTz" firstAttribute="top" secondItem="T1h-xU-kx9" secondAttribute="bottom" constant="8" symbolic="YES" id="5DQ-WE-pyd"/>
+                            <constraint firstItem="cCY-Te-ghC" firstAttribute="leading" secondItem="T1h-xU-kx9" secondAttribute="leading" id="7jr-bt-5tb"/>
+                            <constraint firstItem="GBA-sJ-aTz" firstAttribute="leading" secondItem="L8F-vl-VJb" secondAttribute="leading" id="86D-SL-GQ4"/>
+                            <constraint firstItem="v2F-eK-YKL" firstAttribute="leading" secondItem="YBN-qb-Hpg" secondAttribute="leading" id="8xA-LP-1Sv"/>
+                            <constraint firstItem="FXd-Yj-leM" firstAttribute="leading" secondItem="xnj-Ap-z5T" secondAttribute="leading" id="Dhx-Tv-QGS"/>
+                            <constraint firstItem="L8F-vl-VJb" firstAttribute="leading" secondItem="RZw-hV-833" secondAttribute="leading" id="Gyt-BL-ms2"/>
+                            <constraint firstItem="L8F-vl-VJb" firstAttribute="top" secondItem="GBA-sJ-aTz" secondAttribute="bottom" constant="8" symbolic="YES" id="JGm-L4-fFg"/>
+                            <constraint firstItem="YBN-qb-Hpg" firstAttribute="leading" secondItem="QYE-sz-ZMr" secondAttribute="leading" id="JPd-bv-MdC"/>
+                            <constraint firstItem="iAe-BE-yrW" firstAttribute="top" secondItem="QYE-sz-ZMr" secondAttribute="bottom" constant="8" symbolic="YES" id="L9p-9u-izG"/>
+                            <constraint firstItem="EhN-jr-IpQ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="NS6-p2-zc9"/>
+                            <constraint firstItem="RZw-hV-833" firstAttribute="top" secondItem="L8F-vl-VJb" secondAttribute="bottom" constant="8" symbolic="YES" id="NpD-1I-nMZ"/>
+                            <constraint firstItem="iAe-BE-yrW" firstAttribute="leading" secondItem="FXd-Yj-leM" secondAttribute="leading" id="OPj-fP-8Uf"/>
+                            <constraint firstItem="8fH-Rc-cCu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="TGg-YG-B1L"/>
+                            <constraint firstItem="RZw-hV-833" firstAttribute="leading" secondItem="v2F-eK-YKL" secondAttribute="leading" id="XoH-Ak-aAU"/>
+                            <constraint firstItem="uLw-L2-LgN" firstAttribute="leading" secondItem="cCY-Te-ghC" secondAttribute="leading" id="Y6M-pe-krX"/>
+                            <constraint firstItem="v2F-eK-YKL" firstAttribute="top" secondItem="RZw-hV-833" secondAttribute="bottom" constant="8" symbolic="YES" id="cUN-6f-r4P"/>
+                            <constraint firstItem="uLw-L2-LgN" firstAttribute="top" secondItem="8fH-Rc-cCu" secondAttribute="bottom" constant="8" symbolic="YES" id="cro-4a-oO4"/>
+                            <constraint firstItem="FXd-Yj-leM" firstAttribute="top" secondItem="iAe-BE-yrW" secondAttribute="bottom" constant="8" symbolic="YES" id="ebE-fg-3u5"/>
+                            <constraint firstItem="QYE-sz-ZMr" firstAttribute="top" secondItem="YBN-qb-Hpg" secondAttribute="bottom" constant="8" symbolic="YES" id="eix-bF-Eog"/>
+                            <constraint firstItem="QYE-sz-ZMr" firstAttribute="leading" secondItem="iAe-BE-yrW" secondAttribute="leading" id="fq2-6q-KXb"/>
+                            <constraint firstItem="YBN-qb-Hpg" firstAttribute="top" secondItem="v2F-eK-YKL" secondAttribute="bottom" constant="8" symbolic="YES" id="hY6-Ua-a6e"/>
+                            <constraint firstItem="8fH-Rc-cCu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="6" id="nZ5-bI-grh"/>
+                            <constraint firstItem="8fH-Rc-cCu" firstAttribute="leading" secondItem="uLw-L2-LgN" secondAttribute="leading" id="pWk-rm-8LP"/>
+                            <constraint firstItem="cCY-Te-ghC" firstAttribute="top" secondItem="uLw-L2-LgN" secondAttribute="bottom" constant="8" symbolic="YES" id="rBy-SM-fQD"/>
+                            <constraint firstItem="xnj-Ap-z5T" firstAttribute="top" secondItem="FXd-Yj-leM" secondAttribute="bottom" constant="8" symbolic="YES" id="vzf-e3-Pth"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="211" y="407"/>
+            <point key="canvasLocation" x="39" y="655"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VeA-QM-RoZ"/>
+        <segue reference="ZSh-O4-yAK"/>
     </inferredMetricsTieBreakers>
 </document>

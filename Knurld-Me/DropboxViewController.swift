@@ -20,6 +20,19 @@ class DropboxViewController: UIViewController {
         Dropbox.authorizeFromController(self)
     }
     @IBAction func logoutButtonPressed(sender: UIButton) {
+        logout()
+        
+    }
+    
+    @IBAction func dropboxStuffPressed() {
+       uploadToDropbox()
+    }
+    
+    @IBAction func sharePressed(sender: UIButton) {
+       shareLink()
+    }
+    
+    func logout() {
         // Clear the app group of all files
         if let containerURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.Dropbox.DropboxPhotoWatch") {
             
@@ -53,7 +66,7 @@ class DropboxViewController: UIViewController {
         print("logged out of dropbox")
         
     }
-    @IBAction func dropboxStuffPressed() {
+    func uploadToDropbox() {
         // Verify user is logged into Dropbox
         if let client = Dropbox.authorizedClient {
             
@@ -103,33 +116,20 @@ class DropboxViewController: UIViewController {
                         }
                     }
                     
-                    // Download a file
-                    
-                    let destination : (NSURL, NSHTTPURLResponse) -> NSURL = { temporaryURL, response in
-                        let fileManager = NSFileManager.defaultManager()
-                        let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-                        // generate a unique name for this file in case we've seen it before
-                        let UUID = NSUUID().UUIDString
-                        let pathComponent = "\(UUID)-\(response.suggestedFilename!)"
-                        return directoryURL.URLByAppendingPathComponent(pathComponent)
-                    }
-                    
-                    client.files.download(path: "/hello.txt", destination: destination).response { response, error in
-                        if let (metadata, url) = response {
-                            print("*** Download file ***")
-                            let data = NSData(contentsOfURL: url)
-                            print("Downloaded file name: \(metadata.name)")
-                            print("Downloaded file url: \(url)")
-                            print("Downloaded file data: \(data)")
-                        } else {
-                            print(error!)
-                        }
-                    }
-                    
-                } else {
-                    print(error!)
                 }
             }
         }
     }
+    
+    func shareLink() {
+        guard Dropbox.authorizedClient != nil else {print("login first before sharing!");return}
+        Dropbox.authorizedClient!.sharing.createSharedLink(path: "/hello.txt").response({ response, error in
+            if let link = response {
+                print(link.url)
+            } else {
+                print(error!)
+            }
+        })
+    }
+    
 }
