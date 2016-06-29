@@ -15,6 +15,7 @@
 		00B65ACB1D1CFE5D0079AA0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00B65AC91D1CFE5D0079AA0F /* LaunchScreen.storyboard */; };
 		00B65AD31D1CFF380079AA0F /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B65AD21D1CFF380079AA0F /* SwiftyJSON.swift */; };
 		1568363B3A599216E8826CC4 /* Pods_Knurld_Me.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DFDCB28FA67D79DF6A9A345 /* Pods_Knurld_Me.framework */; };
+		498335281D230E2500EF5209 /* RecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498335271D230E2500EF5209 /* RecordVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		00B65AD21D1CFF380079AA0F /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		1DFDCB28FA67D79DF6A9A345 /* Pods_Knurld_Me.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Knurld_Me.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C710DFCA89229BFF00970F /* Pods-Knurld-Me.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knurld-Me.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Knurld-Me/Pods-Knurld-Me.debug.xcconfig"; sourceTree = "<group>"; };
+		498335271D230E2500EF5209 /* RecordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVC.swift; sourceTree = "<group>"; };
 		F75231ACA4A3D4BC3F1F80D6 /* Pods-Knurld-Me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knurld-Me.release.xcconfig"; path = "Pods/Target Support Files/Pods-Knurld-Me/Pods-Knurld-Me.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 				00B65AD21D1CFF380079AA0F /* SwiftyJSON.swift */,
 				00B65AC01D1CFE5D0079AA0F /* AppDelegate.swift */,
 				00B65AC41D1CFE5D0079AA0F /* Main.storyboard */,
+				498335271D230E2500EF5209 /* RecordVC.swift */,
 				00B65AC71D1CFE5D0079AA0F /* Assets.xcassets */,
 				00B65AC91D1CFE5D0079AA0F /* LaunchScreen.storyboard */,
 				00B65ACC1D1CFE5D0079AA0F /* Info.plist */,
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				498335281D230E2500EF5209 /* RecordVC.swift in Sources */,
 				00B65AD31D1CFF380079AA0F /* SwiftyJSON.swift in Sources */,
 				00B65AC31D1CFE5D0079AA0F /* ViewController.swift in Sources */,
 				001FB5D51D1E0322002258B5 /* KnurldRouter.swift in Sources */,

@@ -10,6 +10,8 @@ import UIKit
 import Alamofire
 
 class ViewController: UIViewController {
+    var audioPath = NSURL()
+    
     var json = JSON([])
     typealias url = String
     func encodeJson(url: String, params: [String: AnyObject]) -> [String: AnyObject] {
