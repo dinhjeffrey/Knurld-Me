@@ -45,12 +45,16 @@
                                     <action selector="pausePlaying:" destination="xj7-eC-SRU" eventType="touchUpInside" id="E3d-lP-J3P"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yH8-Ei-CaV">
+                                <rect key="frame" x="279" y="418" width="42" height="30"/>
+                                <state key="normal" title="segue"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="verify" id="vaR-Jz-qxI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="verify" id="tqE-2V-elc"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OYD-qG-ezB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -69,14 +73,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1h-xU-kx9">
-                                <rect key="frame" x="20" y="111" width="117" height="30"/>
+                                <rect key="frame" x="26" y="126" width="117" height="30"/>
                                 <state key="normal" title="createEnrollment"/>
                                 <connections>
                                     <action selector="createEnrollment" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kk2-UI-pes"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLw-L2-LgN">
-                                <rect key="frame" x="24" y="13" width="113" height="30"/>
+                                <rect key="frame" x="20" y="45" width="113" height="30"/>
                                 <state key="normal" title="createAppModel"/>
                                 <connections>
                                     <action selector="createAppModel" destination="BYZ-38-t0r" eventType="touchUpInside" id="ae2-gH-bcY"/>
@@ -97,7 +101,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCY-Te-ghC">
-                                <rect key="frame" x="24" y="51" width="187" height="30"/>
+                                <rect key="frame" x="26" y="88" width="187" height="30"/>
                                 <state key="normal" title="createConsumer - disabled"/>
                                 <connections>
                                     <action selector="createConsumer" destination="BYZ-38-t0r" eventType="touchUpInside" id="r2z-au-TbY"/>
@@ -132,7 +136,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBA-sJ-aTz">
-                                <rect key="frame" x="12" y="164" width="196" height="30"/>
+                                <rect key="frame" x="26" y="164" width="196" height="30"/>
                                 <state key="normal" title="populateEnrollment (wait 5s)"/>
                                 <connections>
                                     <action selector="populateEnrollment" destination="BYZ-38-t0r" eventType="touchUpInside" id="VtQ-aa-uQc"/>
@@ -145,12 +149,27 @@
                                     <action selector="analysisFile" destination="BYZ-38-t0r" eventType="touchUpInside" id="ymu-L8-nkX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnj-Ap-z5T">
+                                <rect key="frame" x="31" y="507" width="42" height="30"/>
+                                <state key="normal" title="segue"/>
+                                <connections>
+                                    <segue destination="xj7-eC-SRU" kind="show" id="ZSh-O4-yAK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fH-Rc-cCu">
+                                <rect key="frame" x="26" y="7" width="133" height="30"/>
+                                <state key="normal" title="createAccessToken"/>
+                                <connections>
+                                    <action selector="createAccessToken:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tEm-Cb-mfv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="303" y="255"/>
         </scene>
     </scenes>
 </document>

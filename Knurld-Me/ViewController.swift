@@ -32,25 +32,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         //let audioData = NSData(contentsOfURL: audioPath)
-        let params = [
-            "client_id": KnurldRouter.clientID,
-            "client_secret": KnurldRouter.clientSecret
-        ]
         
-        let headers = [
-            "Content-Type": "application/x-www-form-urlencoded"
-        ]
-        
-        let url = "https://api.knurld.io/oauth/client_credential/accesstoken?grant_type=client_credentials"
-        
-        Alamofire.request(.POST, url, parameters: params, headers: headers)
-            .responseJSON { response in
-                
-                if let accessToken = response.result.value?["access_token"] as? String {
-                    KnurldRouter.accessToken = "Bearer " + accessToken
-                    print(KnurldRouter.accessToken)
-                }
-        }
+    }
+    
+    @IBAction func createAccessToken(sender: UIButton) {
+        createAccessToken()
     }
     
     @IBAction func createAppModel() {
@@ -92,12 +78,34 @@ class ViewController: UIViewController {
         analysisByUrl("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-1x.wav?dl=1", numWords: "3")
     }
     @IBAction func analysisFile() {
-//        analysisByFile("/Users/Jeffrey/Library/Developer/CoreSimulator/Devices/FCC00A93-51BB-4A08-9CE9-353B2CA7D53C/data/Containers/Data/Application/28DA96CA-06B8-47A7-9FA0-787B9A354B84/oval-circle-athens-1x.wav", numWords: "3")
+        analysisByFile(NSData(contentsOfURL: audioPath)!, numWords: "3")
         print(audioPath)
     }
     
     @IBAction func getAnalysis(sender: UIButton) {
         getAnalysis()
+    }
+    
+    func createAccessToken() {
+        let params = [
+            "client_id": KnurldRouter.clientID,
+            "client_secret": KnurldRouter.clientSecret
+        ]
+        
+        let headers = [
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        
+        let url = "https://api.knurld.io/oauth/client_credential/accesstoken?grant_type=client_credentials"
+        
+        Alamofire.request(.POST, url, parameters: params, headers: headers)
+            .responseJSON { response in
+                
+                if let accessToken = response.result.value?["access_token"] as? String {
+                    KnurldRouter.accessToken = "Bearer " + accessToken
+                    print(KnurldRouter.accessToken)
+                }
+        }
     }
     
     func createAppModel(enrollmentRepeats: Int, vocabulary: [String], verificationLength: Int) {
@@ -229,6 +237,7 @@ class ViewController: UIViewController {
         
         Alamofire.request(.POST, url, parameters: encodedParams, headers: headers, encoding: .JSON)
             .responseJSON { response in
+                print(response)
                 if let verificationID = response.result.value?["href"] as? String {
                     print(verificationID)
                 }
@@ -295,7 +304,9 @@ class ViewController: UIViewController {
             "num_words": numWords
         ]
         
-        Alamofire.request(.POST, url, parameters: params, headers: headers)
+        let encodedParams = encodeJson(url, params: params)
+        
+        Alamofire.request(.POST, url, parameters: encodedParams, headers: headers, encoding: .JSON)
             .responseJSON { response in
                 print(response)
         }
