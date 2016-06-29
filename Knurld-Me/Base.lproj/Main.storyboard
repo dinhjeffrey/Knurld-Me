@@ -67,14 +67,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYE-sz-ZMr">
-                                <rect key="frame" x="38" y="384" width="55" height="30"/>
-                                <state key="normal" title="analysis"/>
+                                <rect key="frame" x="28" y="384" width="75" height="30"/>
+                                <state key="normal" title="analysisUrl"/>
                                 <connections>
-                                    <action selector="analysis" destination="BYZ-38-t0r" eventType="touchUpInside" id="LZU-sb-M6c"/>
+                                    <action selector="analysisUrl" destination="BYZ-38-t0r" eventType="touchUpInside" id="sOg-BC-Dvd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXd-Yj-leM">
-                                <rect key="frame" x="26" y="429" width="79" height="30"/>
+                                <rect key="frame" x="26" y="453" width="79" height="30"/>
                                 <state key="normal" title="getAnalysis"/>
                                 <connections>
                                     <action selector="getAnalysis:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TVz-Rt-BLH"/>
@@ -85,6 +85,13 @@
                                 <state key="normal" title="populateEnrollment (wait 5s)"/>
                                 <connections>
                                     <action selector="populateEnrollment" destination="BYZ-38-t0r" eventType="touchUpInside" id="VtQ-aa-uQc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAe-BE-yrW">
+                                <rect key="frame" x="26" y="415" width="79" height="30"/>
+                                <state key="normal" title="analysisFile"/>
+                                <connections>
+                                    <action selector="analysisFile" destination="BYZ-38-t0r" eventType="touchUpInside" id="ymu-L8-nkX"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -84,8 +84,11 @@ class ViewController: UIViewController {
         terminateCall()
     }
     
-    @IBAction func analysis() {
+    @IBAction func analysisUrl() {
         analysisByUrl("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-1x.wav?dl=1", numWords: "3")
+    }
+    @IBAction func analysisFile() {
+        analysisByFile("/Users/Jeffrey/Library/Developer/CoreSimulator/Devices/FCC00A93-51BB-4A08-9CE9-353B2CA7D53C/data/Containers/Data/Application/28DA96CA-06B8-47A7-9FA0-787B9A354B84/oval-circle-athens-1x.wav", numWords: "3")
     }
     
     @IBAction func getAnalysis(sender: UIButton) {
@@ -272,13 +275,31 @@ class ViewController: UIViewController {
         }
     }
     
+    // po NSHomeDirectory()
+    // /Users/Jeffrey/Library/Developer/CoreSimulator/Devices/FCC00A93-51BB-4A08-9CE9-353B2CA7D53C/data/Containers/Data/Application/28DA96CA-06B8-47A7-9FA0-787B9A354B84
+    
+    func analysisByFile(filedata: NSData, numWords: String) {
+        let url = "https://api.knurld.io/v1/endpointAnalysis/file"
+        let headers = [
+            "Authorization": ViewController.accessToken,
+            "Developer-Id": ViewController.developerID,
+            "Content-Type": "multipart/form-data"
+        ]
+        let params = [
+            "filedata": filedata,
+            "num_words": numWords
+        ]
+        
+        Alamofire.request(.POST, url, parameters: params, headers: headers)
+            .responseJSON { response in
+                print(response)
+        }
+        
+    }
+    
     func getAnalysis() {
         let url = "https://api.knurld.io/v1/endpointAnalysis/" + KnurldRouter.taskNameID
         guard KnurldRouter.taskNameID != "" else { print("didn't initiate analysis yet"); return }
-        let headers = [
-            "Authorization": KnurldRouter.accessToken,
-            "Developer-Id" : KnurldRouter.developerID
-        ]
         
         Alamofire.request(.GET, url, headers: headers)
             .responseJSON { response in
