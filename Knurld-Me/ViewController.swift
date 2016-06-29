@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyDropbox
 
 class ViewController: UIViewController {
     var audioPath = NSURL()
@@ -32,7 +33,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         //let audioData = NSData(contentsOfURL: audioPath)
-        
+                
     }
     
     @IBAction func createAccessToken(sender: UIButton) {
@@ -299,14 +300,22 @@ class ViewController: UIViewController {
             "Developer-Id": ViewController.developerID,
             "Content-Type": "multipart/form-data"
         ]
+//        let params = [
+//            "filedata": filedata,
+//            "num_words": numWords
+//        ]
         
         Alamofire.upload(.POST, url, headers: headers,
                          multipartFormData: { multipartFormData in
-                            multipartFormData.appendBodyPart(data: filedata, name: "fileData", fileName: "unicorn.wav", mimeType: "audio/wav")},
+                            multipartFormData.appendBodyPart(data: filedata, name: "fileData", fileName: "unicorn.wav", mimeType: "audio/wav")
+//                            multipartFormData.appendBodyPart(data: params["filedata"]!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, name :"filedata")
+//                            multipartFormData.appendBodyPart(data: params["num_words"]!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, name :"num_words")
+                            },
                          encodingCompletion: { encodingResult in
                             switch encodingResult {
                             case .Success(let upload, _, _):
                                 upload.responseJSON { response in
+                                    print(response)
                                     if let taskNameID = response.result.value?["taskName"] as? String {
                                         KnurldRouter.taskNameID = taskNameID
                                         print(KnurldRouter.taskNameID)

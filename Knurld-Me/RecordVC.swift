@@ -73,7 +73,7 @@ class RecordVC: UIViewController {
             print("stop!!")
         } catch {
         }
-        self.performSegueWithIdentifier("verify", sender: self)
+        //self.performSegueWithIdentifier("verify", sender: self)
     }
     
     

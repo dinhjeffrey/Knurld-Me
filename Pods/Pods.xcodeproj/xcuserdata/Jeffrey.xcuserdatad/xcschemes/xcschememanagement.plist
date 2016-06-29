@@ -14,15 +14,25 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftyDropbox.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>75755DFB7CD6E7C45EB9FE1BC1CBD651</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B6B00B424033ADF127F37D98C9D3BABF</key>
+		<key>DC1B5D854099AAC7C7CB64E5A30E3086</key>
 		<dict>
 			<key>primary</key>
 			<true/>
