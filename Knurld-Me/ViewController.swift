@@ -304,9 +304,7 @@ class ViewController: UIViewController {
             "num_words": numWords
         ]
         
-        let encodedParams = encodeJson(url, params: params)
-        
-        Alamofire.request(.POST, url, parameters: encodedParams, headers: headers, encoding: .JSON)
+        Alamofire.request(.POST, url, parameters: params, headers: headers)
             .responseJSON { response in
                 print(response)
         }
