@@ -91,7 +91,7 @@ class ViewController: UIViewController {
     }
     @IBAction func analysisFile() {
 //        analysisByFile("/Users/Jeffrey/Library/Developer/CoreSimulator/Devices/FCC00A93-51BB-4A08-9CE9-353B2CA7D53C/data/Containers/Data/Application/28DA96CA-06B8-47A7-9FA0-787B9A354B84/oval-circle-athens-1x.wav", numWords: "3")
-        print(RecordVC.)
+        print(audioPath)
     }
     
     @IBAction func getAnalysis(sender: UIButton) {
