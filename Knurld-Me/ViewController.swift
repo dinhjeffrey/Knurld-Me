@@ -30,6 +30,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //let audioData = NSData(contentsOfURL: audioPath)
         let params = [
             "client_id": KnurldRouter.clientID,
             "client_secret": KnurldRouter.clientSecret
