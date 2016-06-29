@@ -121,13 +121,6 @@
                                     <action selector="terminateCall:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z6j-yj-HCy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYE-sz-ZMr">
-                                <rect key="frame" x="28" y="384" width="75" height="30"/>
-                                <state key="normal" title="analysisUrl"/>
-                                <connections>
-                                    <action selector="analysisUrl" destination="BYZ-38-t0r" eventType="touchUpInside" id="sOg-BC-Dvd"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXd-Yj-leM">
                                 <rect key="frame" x="26" y="453" width="79" height="30"/>
                                 <state key="normal" title="getAnalysis"/>
@@ -161,6 +154,13 @@
                                 <state key="normal" title="createAccessToken"/>
                                 <connections>
                                     <action selector="createAccessToken:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tEm-Cb-mfv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYE-sz-ZMr">
+                                <rect key="frame" x="20" y="384" width="148" height="30"/>
+                                <state key="normal" title="analysisUrl - disabled"/>
+                                <connections>
+                                    <action selector="analysisUrl" destination="BYZ-38-t0r" eventType="touchUpInside" id="sOg-BC-Dvd"/>
                                 </connections>
                             </button>
                         </subviews>

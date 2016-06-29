@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     ]
     static let developerID = "Bearer: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MDQ4MTY5MDUsInJvbGUiOiJhZG1pbiIsImlkIjoiZWNkMTAwM2YzODJlNWEzZjU0NGQyZjFkY2Y3YWJhN2IiLCJ0ZW5hbnQiOiJ0ZW5hbnRfbXJwdGF4M25vajJ4b25ic21ydncyNXR1bTV3dGk1ZGdvYnRkaTVsYnBpenc0M2xnb3YzeHMzZHVtcnhkazUzciIsIm5hbWUiOiJhZG1pbiJ9.Vu44NwEq6alluVsEMRdDx5pqn28g0Ju0is1EsYDNPtz06wKwlHoZOi2zv8lvmwqu7RV71oxMizIBqDrcxGKP9g"
     static var accessToken = KnurldRouter.accessToken
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,7 +75,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func analysisUrl() {
-        analysisByUrl("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-1x.wav?dl=1", numWords: "3")
+        //analysisByUrl("https://www.dropbox.com/s/ktudam6wvo5fnff/oval-circle-athens-1x.wav?dl=1", numWords: "3")
     }
     @IBAction func analysisFile() {
         analysisByFile(NSData(contentsOfURL: audioPath)!, numWords: "3")
@@ -115,7 +115,7 @@ class ViewController: UIViewController {
             "vocabulary": vocabulary,
             "verificationLength": verificationLength
         ]
-
+        
         let encodedParams = encodeJson(url, params: params)
         
         Alamofire.request(.POST, url, parameters: encodedParams, headers: headers, encoding: .JSON)
@@ -249,7 +249,7 @@ class ViewController: UIViewController {
         let params = [
             "number": phoneNumber
         ]
-
+        
         let encodedParams = encodeJson(url, params: params)
         
         Alamofire.request(.POST, url, parameters: encodedParams, headers: headers, encoding: .JSON)
@@ -299,16 +299,22 @@ class ViewController: UIViewController {
             "Developer-Id": ViewController.developerID,
             "Content-Type": "multipart/form-data"
         ]
-        let params = [
-            "filedata": filedata,
-            "num_words": numWords
-        ]
         
-        Alamofire.request(.POST, url, parameters: params, headers: headers)
-            .responseJSON { response in
-                print(response)
-        }
-        
+        Alamofire.upload(.POST, url, headers: headers,
+                         multipartFormData: { multipartFormData in
+                            multipartFormData.appendBodyPart(data: filedata, name: "fileData", fileName: "unicorn.wav", mimeType: "audio/wav")},
+                         encodingCompletion: { encodingResult in
+                            switch encodingResult {
+                            case .Success(let upload, _, _):
+                                upload.responseJSON { response in
+                                    if let taskNameID = response.result.value?["taskName"] as? String {
+                                        KnurldRouter.taskNameID = taskNameID
+                                        print(KnurldRouter.taskNameID)
+                                    }
+                                }
+                            case .Failure(let encodingError):
+                                print(encodingError)
+                            }})
     }
     
     func getAnalysis() {
